@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quizmania/routeGenerator.dart';
+import 'package:quizmania/textConstants.dart';
 import 'ColorContants.dart';
+import 'RoutingConstants.dart';
+import 'SizeConstants.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,39 +17,67 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: ColorConstants.AppbarColor,
       ),
-      initialRoute: "/",
+      initialRoute: RoutingConstants.MainViewRoute,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
 
 class MainView extends StatelessWidget {
-  final String title = "Quizmania";
-
-  MainView({Key, key}) : super(key: key);
-
+  final topicIcons = [
+    Icons.public,
+    Icons.sports_soccer,
+    Icons.history,
+    Icons.auto_stories,
+    Icons.palette_outlined,
+    Icons.tv,
+    Icons.movie
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
+      appBar: AppBar(title: Center(child: Text(TextConstants.appBarMain))),
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+          children: [
+            Container(
+              height: SizeConstants.topicBoxHeight,
+              width: SizeConstants.topicBoxWidth,
+              margin: EdgeInsets.all(SizeConstants.boxPadding),
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(SizeConstants.borderRadius),
+                  color: ColorConstants.BoxColor),
+              child: Center(
+                child: Text(
+                  TextConstants.topicTitle,
+                  style: TextStyle(fontSize: SizeConstants.titleSize),
+                ),
+              ),
+            ),
+            // hier ein Herausforderung
+            Expanded(
+              child: ListView.builder(
+                itemCount: TextConstants.topics.length,
+                itemBuilder: (context, index) {
+                  String navigationText = TextConstants.topics[index] + "View";
+                  print(navigationText);
+                  return Card(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(navigationText);
+                      },
+                      child: ListTile(
+                          leading: Icon(topicIcons[index]),
+                          title: Text(TextConstants.topics[index])),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed("/TopicView", arguments: "hello");
-        },
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
