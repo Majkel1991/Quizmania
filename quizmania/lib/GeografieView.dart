@@ -210,8 +210,8 @@ class _GeografieViewState extends State<GeografieView> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(RoutingConstants.MainViewRoute);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            RoutingConstants.MainViewRoute, (route) => false);
                       },
                       child: Text(TextConstants.endOfQuizButtonText),
                     ),
