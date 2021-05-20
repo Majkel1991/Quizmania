@@ -43,7 +43,7 @@ class MainView extends StatelessWidget {
             Container(
               height: SizeConstants.topicBoxHeight,
               width: SizeConstants.topicBoxWidth,
-              margin: EdgeInsets.all(SizeConstants.boxPadding),
+              margin: EdgeInsets.all(SizeConstants.topicBoxMargin),
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(SizeConstants.borderRadius),

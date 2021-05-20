@@ -12,4 +12,7 @@ class TextConstants {
     "Fernsehserien",
     "Filme"
   ];
+  static const String endOfQuiz =
+      "Sie haben alle Fragen in diesem Themenbereich beantwortet";
+  static const String endOfQuizButtonText = "Zurück zur Themenwahl";
 }
