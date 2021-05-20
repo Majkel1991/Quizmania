@@ -56,7 +56,8 @@ class MainView extends StatelessWidget {
               ),
             ),
             // hier ein Herausforderung
-            Expanded(
+            Container(
+              height: 400,
               child: ListView.builder(
                 itemCount: TextConstants.topics.length,
                 itemBuilder: (context, index) {
@@ -75,6 +76,27 @@ class MainView extends StatelessWidget {
                 },
               ),
             ),
+            Container(
+              height: SizeConstants.buttonHeight,
+              width: SizeConstants.buttonWidth,
+              padding: EdgeInsets.all(SizeConstants.buttonPadding),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed))
+                        return ColorConstants.ButtonColor;
+                      return ColorConstants
+                          .ButtonColor; // Use the component's default.
+                    },
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed("ScoreboardView");
+                },
+                child: Text("Zum Scoreboard"),
+              ),
+            )
           ],
         ),
       ),

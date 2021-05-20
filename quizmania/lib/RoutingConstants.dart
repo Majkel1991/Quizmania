@@ -7,4 +7,5 @@ class RoutingConstants {
   static const String KunstViewRoute = "KunstView";
   static const String FernsehserienRoute = "FernsehserienView";
   static const String FilmeViewRoute = "FilmeView";
+  static const String ScoarboardViewRoute = "ScoreboardView";
 }

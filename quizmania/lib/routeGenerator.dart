@@ -6,6 +6,7 @@ import 'GeschichteView.dart';
 import 'KunstView.dart';
 import 'LiteraturView.dart';
 import 'RoutingConstants.dart';
+import 'ScoreboardView.dart';
 import 'SportView.dart';
 import 'main.dart';
 import 'FernsehserienView.dart';
@@ -29,6 +30,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => LiteraturView());
       case RoutingConstants.SportViewRoute:
         return MaterialPageRoute(builder: (context) => SportView());
+      case RoutingConstants.ScoarboardViewRoute:
+        return MaterialPageRoute(builder: (context) => ScoreboardView());
     }
     return _errorRoute();
   }
