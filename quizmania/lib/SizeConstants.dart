@@ -18,12 +18,12 @@ class SizeConstants {
   static const double buttonWidth = 170;
   static const double buttonPadding = 15;
 
-  static const double questionBoxHeight = 250;
+  static const double questionBoxHeight = 225;
   static const double questionBoxWidth = double.infinity;
   static const double questionBoxMargin = 5;
   static const double answerBoxMargin = 5;
 
-  static const double gridViewContainerHeight = 300;
+  static const double gridViewContainerHeight = 250;
   static const double gridViewContainerMargin = 5;
   static const int gridViewCrossAxisCount = 2;
   static const double gridViewMainAxisSpacing = 5;
@@ -33,4 +33,7 @@ class SizeConstants {
   static const double backToMainButtonHeight = 150;
   static const double backToMainButtonWidth = double.infinity;
   static const double backToMainButtonMargin = 5;
+
+  static const double nextQuestionButtonHeight = 25;
+  static const double nextQuestionButtonWidth = 40;
 }

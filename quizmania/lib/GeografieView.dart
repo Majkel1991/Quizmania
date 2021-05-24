@@ -21,6 +21,11 @@ class _GeografieViewState extends State<GeografieView> {
   int counter = 0;
   int score = 0;
   var scoreArray = [-3, -2, -1, 1];
+  Color buttonColor1 = ColorConstants.ButtonColor;
+  Color buttonColor2 = ColorConstants.ButtonColor;
+  Color buttonColor3 = ColorConstants.ButtonColor;
+  Color buttonColor4 = ColorConstants.ButtonColor;
+  bool isEnabled = true;
   @override
   Widget build(BuildContext context) {
     print(widget.geographyAnswersMap.toString());
@@ -67,21 +72,26 @@ class _GeografieViewState extends State<GeografieView> {
                                   MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.pressed))
-                                    return ColorConstants.ButtonColor;
-                                  return ColorConstants.ButtonColor;
+                                    return buttonColor1;
+                                  return buttonColor1;
                                 },
                               ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                if (scoreArray[0].toString() == "1") {
-                                  score += 1;
-                                  print("correct answer");
-                                }
-                                scoreArray.shuffle();
-                                counter += 1;
-                              });
-                            },
+                            onPressed: isEnabled
+                                ? () {
+                                    setState(() {
+                                      if (scoreArray[0].toString() == "1") {
+                                        score += 1;
+                                        print("correct answer");
+                                        buttonColor1 = Colors.green;
+                                      } else {
+                                        print("wrong answer");
+                                        buttonColor1 = Colors.red;
+                                      }
+                                      isEnabled = false;
+                                    });
+                                  }
+                                : null,
                             child: Text(widget.geographyAnswersMap
                                 .elementAt(counter)[scoreArray[0]]
                                 .toString()),
@@ -95,21 +105,26 @@ class _GeografieViewState extends State<GeografieView> {
                                   MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.pressed))
-                                    return ColorConstants.ButtonColor;
-                                  return ColorConstants.ButtonColor;
+                                    return buttonColor2;
+                                  return buttonColor2;
                                 },
                               ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                if (scoreArray[1].toString() == "1") {
-                                  score += 1;
-                                  print("correct answer");
-                                }
-                                scoreArray.shuffle();
-                                counter += 1;
-                              });
-                            },
+                            onPressed: isEnabled
+                                ? () {
+                                    setState(() {
+                                      if (scoreArray[1].toString() == "1") {
+                                        score += 1;
+                                        print("correct answer");
+                                        buttonColor2 = Colors.green;
+                                      } else {
+                                        print("wrong answer");
+                                        buttonColor2 = Colors.red;
+                                      }
+                                      isEnabled = false;
+                                    });
+                                  }
+                                : null,
                             child: Text(widget.geographyAnswersMap
                                 .elementAt(counter)[scoreArray[1]]
                                 .toString()),
@@ -123,21 +138,26 @@ class _GeografieViewState extends State<GeografieView> {
                                   MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.pressed))
-                                    return ColorConstants.ButtonColor;
-                                  return ColorConstants.ButtonColor;
+                                    return buttonColor3;
+                                  return buttonColor3;
                                 },
                               ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                if (scoreArray[2].toString() == "1") {
-                                  score += 1;
-                                  print("correct answer");
-                                }
-                                scoreArray.shuffle();
-                                counter += 1;
-                              });
-                            },
+                            onPressed: isEnabled
+                                ? () {
+                                    setState(() {
+                                      if (scoreArray[2].toString() == "1") {
+                                        score += 1;
+                                        print("correct answer");
+                                        buttonColor3 = Colors.green;
+                                      } else {
+                                        print("wrong answer");
+                                        buttonColor3 = Colors.red;
+                                      }
+                                      isEnabled = false;
+                                    });
+                                  }
+                                : null,
                             child: Text(widget.geographyAnswersMap
                                 .elementAt(counter)[scoreArray[2]]
                                 .toString()),
@@ -151,21 +171,26 @@ class _GeografieViewState extends State<GeografieView> {
                                   MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.pressed))
-                                    return ColorConstants.ButtonColor;
-                                  return ColorConstants.ButtonColor;
+                                    return buttonColor4;
+                                  return buttonColor4;
                                 },
                               ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                if (scoreArray[3].toString() == "1") {
-                                  score += 1;
-                                  print("correct answer");
-                                }
-                                scoreArray.shuffle();
-                                counter += 1;
-                              });
-                            },
+                            onPressed: isEnabled
+                                ? () {
+                                    setState(() {
+                                      if (scoreArray[3].toString() == "1") {
+                                        score += 1;
+                                        buttonColor4 = Colors.green;
+                                        print("correct answer");
+                                      } else {
+                                        print("wrong answer");
+                                        buttonColor4 = Colors.red;
+                                      }
+                                      isEnabled = false;
+                                    });
+                                  }
+                                : null,
                             child: Text(widget.geographyAnswersMap
                                 .elementAt(counter)[scoreArray[3]]
                                 .toString()),
@@ -173,6 +198,29 @@ class _GeografieViewState extends State<GeografieView> {
                         ),
                       ],
                     ),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed))
+                            return ColorConstants.ButtonColor;
+                          return ColorConstants.ButtonColor;
+                        },
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        scoreArray.shuffle();
+                        counter += 1;
+                        buttonColor1 = ColorConstants.ButtonColor;
+                        buttonColor2 = ColorConstants.ButtonColor;
+                        buttonColor3 = ColorConstants.ButtonColor;
+                        buttonColor4 = ColorConstants.ButtonColor;
+                        isEnabled = true;
+                      });
+                    },
+                    child: Text("nächste Frage"),
                   ),
                 ],
               ),
