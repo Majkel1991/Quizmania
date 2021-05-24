@@ -30,10 +30,6 @@ class SizeConstants {
   static const double gridViewCrossAxisSpacing = 5;
   static const double gridViewChildAspectRatio = 1.8;
 
-  static const double backToMainButtonHeight = 150;
-  static const double backToMainButtonWidth = double.infinity;
-  static const double backToMainButtonMargin = 5;
-
   static const double nextQuestionButtonHeight = 25;
   static const double nextQuestionButtonWidth = 40;
 }

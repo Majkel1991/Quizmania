@@ -51,13 +51,14 @@ class MainView extends StatelessWidget {
               child: Center(
                 child: Text(
                   TextConstants.topicTitle,
-                  style: TextStyle(fontSize: SizeConstants.titleSize),
+                  style: TextStyle(
+                      fontSize: SizeConstants.titleSize,
+                      color: ColorConstants.TextColorWithinBox),
                 ),
               ),
             ),
-            // hier ein Herausforderung
             Container(
-              height: 400,
+              height: SizeConstants.mainListViewHeight,
               child: ListView.builder(
                 itemCount: TextConstants.topics.length,
                 itemBuilder: (context, index) {

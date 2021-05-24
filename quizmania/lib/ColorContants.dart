@@ -6,4 +6,5 @@ class ColorConstants {
   static const TextColor = Colors.black;
   static const BoxColor = Color.fromARGB(180, 123, 104, 238);
   static const SizeBoxColor = Colors.white;
+  static const TextColorWithinBox = Colors.white;
 }
