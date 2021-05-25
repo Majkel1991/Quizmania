@@ -1,57 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ColorContants.dart';
-import 'QuestionAndAnswerConstants.dart';
-import 'RoutingConstants.dart';
-import 'SizeConstants.dart';
-import 'TextConstants.dart';
+import '../Constants/ColorContants.dart';
+import '../Constants/QuestionAndAnswerConstants.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Constants/SizeConstants.dart';
+import '../Constants/TextConstants.dart';
 
-class GeschichteView extends StatefulWidget {
-  final historyQuestions = QuestionsAndAnswersConstants.HISTORY.keys.toList();
-  final historyAnswersMap = QuestionsAndAnswersConstants.HISTORY.values;
-
-  GeschichteView({Key key}) : super(key: key);
+class KunstView extends StatefulWidget {
+  final artQuestions = QuestionsAndAnswersConstants.ART.keys.toList();
+  final artAnswersMap = QuestionsAndAnswersConstants.ART.values;
+  KunstView({Key key}) : super(key: key);
 
   @override
-  _GeschichteViewState createState() => _GeschichteViewState();
-
+  _KunstViewState createState() => _KunstViewState();
   static Future<int> getScoreFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final historyScore = prefs.getInt("historyScore");
-    if (historyScore == null) {
+    final artScore = prefs.getInt("artScore");
+    if (artScore == null) {
       return 0;
     }
-    return historyScore;
+    return artScore;
   }
 
   static Future<int> getTotalFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final historyTotalQuestions = prefs.getInt("historyTotal");
-    if (historyTotalQuestions == null) {
+    final artTotalQuestions = prefs.getInt("artTotal");
+    if (artTotalQuestions == null) {
       return 0;
     }
-    return historyTotalQuestions;
+    return artTotalQuestions;
   }
 
   static Future<void> resetScoreAndTotal() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("historyScore", 0);
-    await prefs.setInt("historyTotal", 0);
+    await prefs.setInt("artScore", 0);
+    await prefs.setInt("artTotal", 0);
   }
 
   Future<void> incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
     int lastScore = await getScoreFromSharedPref();
     int currentScore = ++lastScore;
-    await prefs.setInt("historyScore", currentScore);
+    await prefs.setInt("artScore", currentScore);
   }
 
   Future<void> incrementTotal() async {
     final prefs = await SharedPreferences.getInstance();
     int lastTotal = await getTotalFromSharedPref();
     int currentTotal = ++lastTotal;
-    await prefs.setInt("historyTotal", currentTotal);
+    await prefs.setInt("artTotal", currentTotal);
   }
 
   void _getScore() async {
@@ -65,7 +63,7 @@ class GeschichteView extends StatefulWidget {
   }
 }
 
-class _GeschichteViewState extends State<GeschichteView> {
+class _KunstViewState extends State<KunstView> {
   int counter = 0;
   var scoreArray = [-3, -2, -1, 1];
   Color buttonColor1 = ColorConstants.ButtonColor;
@@ -79,11 +77,11 @@ class _GeschichteViewState extends State<GeschichteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.history),
+        leading: Icon(Icons.palette_outlined),
         centerTitle: true,
-        title: Text(TextConstants.appBarHistory),
+        title: Text(TextConstants.appBarArt),
       ),
-      body: counter <= (widget.historyQuestions.length - 1)
+      body: counter <= (widget.artQuestions.length - 1)
           ? _displayQuestions()
           : _displayEndOfQuiz(context),
     );
@@ -103,7 +101,7 @@ class _GeschichteViewState extends State<GeschichteView> {
                 color: ColorConstants.BoxColor),
             child: Center(
               child: Text(
-                widget.historyQuestions[counter],
+                widget.artQuestions[counter],
                 style: TextStyle(
                     color: ColorConstants.TextColorWithinBox,
                     fontSize: SizeConstants.titleSize),
@@ -153,7 +151,7 @@ class _GeschichteViewState extends State<GeschichteView> {
                           }
                         : null,
                     child: Text(
-                        widget.historyAnswersMap
+                        widget.artAnswersMap
                             .elementAt(counter)[scoreArray[0]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -189,7 +187,7 @@ class _GeschichteViewState extends State<GeschichteView> {
                           }
                         : null,
                     child: Text(
-                        widget.historyAnswersMap
+                        widget.artAnswersMap
                             .elementAt(counter)[scoreArray[1]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -225,7 +223,7 @@ class _GeschichteViewState extends State<GeschichteView> {
                           }
                         : null,
                     child: Text(
-                        widget.historyAnswersMap
+                        widget.artAnswersMap
                             .elementAt(counter)[scoreArray[2]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -261,7 +259,7 @@ class _GeschichteViewState extends State<GeschichteView> {
                           }
                         : null,
                     child: Text(
-                        widget.historyAnswersMap
+                        widget.artAnswersMap
                             .elementAt(counter)[scoreArray[3]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),

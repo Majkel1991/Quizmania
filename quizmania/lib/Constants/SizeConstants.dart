@@ -37,4 +37,5 @@ class SizeConstants {
   static const double scoreboardPadding = 20;
   static const int scoreboardAnimationDuration = 1000;
   static const double scoreboardPaddingHeader = 5;
+  static const double scoreboardButtonMargin = 5;
 }

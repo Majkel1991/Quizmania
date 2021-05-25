@@ -1,70 +1,72 @@
 import 'package:flutter/material.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Constants/TextConstants.dart';
+
+import '../Constants/ColorContants.dart';
+import '../Constants/SizeConstants.dart';
+import 'package:quizmania/Constants/QuestionAndAnswerConstants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ColorContants.dart';
-import 'QuestionAndAnswerConstants.dart';
-import 'RoutingConstants.dart';
-import 'SizeConstants.dart';
-import 'TextConstants.dart';
+class GeografieView extends StatefulWidget {
+  final geographyQuestions =
+      QuestionsAndAnswersConstants.GEOGRAPHY.keys.toList();
+  final geographyAnswersMap = QuestionsAndAnswersConstants.GEOGRAPHY.values;
 
-class SportView extends StatefulWidget {
-  final sportQuestions = QuestionsAndAnswersConstants.SPORT.keys.toList();
-  final sportAnswerMap = QuestionsAndAnswersConstants.SPORT.values;
-  SportView({Key key}) : super(key: key);
+  GeografieView({Key key}) : super(key: key);
 
   @override
-  _SportViewState createState() => _SportViewState();
+  _GeografieViewState createState() => _GeografieViewState();
 
-  static Future<int> getSportScoreFromSharedPref() async {
+  static Future<int> getScoreFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final sportScore = prefs.getInt("sportScore");
-    if (sportScore == null) {
+    final geographyScore = prefs.getInt("geographyScore");
+    if (geographyScore == null) {
       return 0;
     }
-    return sportScore;
+    return geographyScore;
   }
 
-  static Future<int> getSportTotalFromSharedPref() async {
+  static Future<int> getTotalFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final sportTotalQuestions = prefs.getInt("sportTotal");
-    if (sportTotalQuestions == null) {
+    final geographyTotalQuestions = prefs.getInt("geographyTotal");
+    if (geographyTotalQuestions == null) {
       return 0;
     }
-    return sportTotalQuestions;
+    return geographyTotalQuestions;
   }
 
   static Future<void> resetScoreAndTotal() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("sportScore", 0);
-    await prefs.setInt("sportTotal", 0);
+    await prefs.setInt("geographyScore", 0);
+    await prefs.setInt("geographyTotal", 0);
   }
 
   Future<void> incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
-    int lastScore = await getSportScoreFromSharedPref();
+    int lastScore = await getScoreFromSharedPref();
     int currentScore = ++lastScore;
-    await prefs.setInt("sportScore", currentScore);
+    await prefs.setInt("geographyScore", currentScore);
   }
 
   Future<void> incrementTotal() async {
     final prefs = await SharedPreferences.getInstance();
-    int lastTotal = await getSportTotalFromSharedPref();
+    int lastTotal = await getTotalFromSharedPref();
     int currentTotal = ++lastTotal;
-    await prefs.setInt("sportTotal", currentTotal);
+    await prefs.setInt("geographyTotal", currentTotal);
   }
 
   void _getScore() async {
-    int score = await getSportScoreFromSharedPref();
+    int score = await getScoreFromSharedPref();
     print("Pref score: " + score.toString());
   }
 
   void _getTotal() async {
-    int total = await getSportTotalFromSharedPref();
+    int total = await getTotalFromSharedPref();
     print("Pref total: " + total.toString());
   }
 }
 
-class _SportViewState extends State<SportView> {
+class _GeografieViewState extends State<GeografieView> {
   int counter = 0;
   var scoreArray = [-3, -2, -1, 1];
   Color buttonColor1 = ColorConstants.ButtonColor;
@@ -78,11 +80,11 @@ class _SportViewState extends State<SportView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.sports_soccer),
+        leading: Icon(Icons.public),
         centerTitle: true,
-        title: Text(TextConstants.appBarSport),
+        title: Text(TextConstants.appBarGeografie),
       ),
-      body: counter <= (widget.sportQuestions.length - 1)
+      body: counter <= (widget.geographyQuestions.length - 1)
           ? _displayQuestions()
           : _displayEndOfQuiz(context),
     );
@@ -102,7 +104,7 @@ class _SportViewState extends State<SportView> {
                 color: ColorConstants.BoxColor),
             child: Center(
               child: Text(
-                widget.sportQuestions[counter],
+                widget.geographyQuestions[counter],
                 style: TextStyle(
                     color: ColorConstants.TextColorWithinBox,
                     fontSize: SizeConstants.titleSize),
@@ -152,7 +154,7 @@ class _SportViewState extends State<SportView> {
                           }
                         : null,
                     child: Text(
-                        widget.sportAnswerMap
+                        widget.geographyAnswersMap
                             .elementAt(counter)[scoreArray[0]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -188,7 +190,7 @@ class _SportViewState extends State<SportView> {
                           }
                         : null,
                     child: Text(
-                        widget.sportAnswerMap
+                        widget.geographyAnswersMap
                             .elementAt(counter)[scoreArray[1]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -224,7 +226,7 @@ class _SportViewState extends State<SportView> {
                           }
                         : null,
                     child: Text(
-                        widget.sportAnswerMap
+                        widget.geographyAnswersMap
                             .elementAt(counter)[scoreArray[2]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -260,7 +262,7 @@ class _SportViewState extends State<SportView> {
                           }
                         : null,
                     child: Text(
-                        widget.sportAnswerMap
+                        widget.geographyAnswersMap
                             .elementAt(counter)[scoreArray[3]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),

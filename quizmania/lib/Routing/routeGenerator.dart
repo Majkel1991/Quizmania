@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quizmania/FernsehserienView.dart';
-import 'FilmeView.dart';
-import 'GeografieView.dart';
-import 'GeschichteView.dart';
-import 'KunstView.dart';
-import 'LiteraturView.dart';
-import 'RoutingConstants.dart';
-import 'ScoreboardView.dart';
-import 'SportView.dart';
-import 'main.dart';
-import 'FernsehserienView.dart';
+import 'package:quizmania/Views/FernsehserienView.dart';
+import '../Views/FilmeView.dart';
+import '../Views/GeografieView.dart';
+import '../Views/GeschichteView.dart';
+import '../Views/KunstView.dart';
+import '../Views/LiteraturView.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Views/ScoreboardView.dart';
+import '../Views/SportView.dart';
+import '../main.dart';
+import '../Views/FernsehserienView.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

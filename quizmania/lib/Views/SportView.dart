@@ -1,55 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ColorContants.dart';
-import 'QuestionAndAnswerConstants.dart';
-import 'RoutingConstants.dart';
-import 'SizeConstants.dart';
-import 'TextConstants.dart';
+import '../Constants/ColorContants.dart';
+import '../Constants/QuestionAndAnswerConstants.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Constants/SizeConstants.dart';
+import '../Constants/TextConstants.dart';
 
-class KunstView extends StatefulWidget {
-  final artQuestions = QuestionsAndAnswersConstants.ART.keys.toList();
-  final artAnswersMap = QuestionsAndAnswersConstants.ART.values;
-  KunstView({Key key}) : super(key: key);
+class SportView extends StatefulWidget {
+  final sportQuestions = QuestionsAndAnswersConstants.SPORT.keys.toList();
+  final sportAnswerMap = QuestionsAndAnswersConstants.SPORT.values;
+  SportView({Key key}) : super(key: key);
 
   @override
-  _KunstViewState createState() => _KunstViewState();
+  _SportViewState createState() => _SportViewState();
+
   static Future<int> getScoreFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final artScore = prefs.getInt("artScore");
-    if (artScore == null) {
+    final sportScore = prefs.getInt("sportScore");
+    if (sportScore == null) {
       return 0;
     }
-    return artScore;
+    return sportScore;
   }
 
   static Future<int> getTotalFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final artTotalQuestions = prefs.getInt("artTotal");
-    if (artTotalQuestions == null) {
+    final sportTotalQuestions = prefs.getInt("sportTotal");
+    if (sportTotalQuestions == null) {
       return 0;
     }
-    return artTotalQuestions;
+    return sportTotalQuestions;
   }
 
   static Future<void> resetScoreAndTotal() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("artScore", 0);
-    await prefs.setInt("artTotal", 0);
+    await prefs.setInt("sportScore", 0);
+    await prefs.setInt("sportTotal", 0);
   }
 
   Future<void> incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
     int lastScore = await getScoreFromSharedPref();
     int currentScore = ++lastScore;
-    await prefs.setInt("artScore", currentScore);
+    await prefs.setInt("sportScore", currentScore);
   }
 
   Future<void> incrementTotal() async {
     final prefs = await SharedPreferences.getInstance();
     int lastTotal = await getTotalFromSharedPref();
     int currentTotal = ++lastTotal;
-    await prefs.setInt("artTotal", currentTotal);
+    await prefs.setInt("sportTotal", currentTotal);
   }
 
   void _getScore() async {
@@ -63,7 +64,7 @@ class KunstView extends StatefulWidget {
   }
 }
 
-class _KunstViewState extends State<KunstView> {
+class _SportViewState extends State<SportView> {
   int counter = 0;
   var scoreArray = [-3, -2, -1, 1];
   Color buttonColor1 = ColorConstants.ButtonColor;
@@ -77,11 +78,11 @@ class _KunstViewState extends State<KunstView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.palette_outlined),
+        leading: Icon(Icons.sports_soccer),
         centerTitle: true,
-        title: Text(TextConstants.appBarArt),
+        title: Text(TextConstants.appBarSport),
       ),
-      body: counter <= (widget.artQuestions.length - 1)
+      body: counter <= (widget.sportQuestions.length - 1)
           ? _displayQuestions()
           : _displayEndOfQuiz(context),
     );
@@ -101,7 +102,7 @@ class _KunstViewState extends State<KunstView> {
                 color: ColorConstants.BoxColor),
             child: Center(
               child: Text(
-                widget.artQuestions[counter],
+                widget.sportQuestions[counter],
                 style: TextStyle(
                     color: ColorConstants.TextColorWithinBox,
                     fontSize: SizeConstants.titleSize),
@@ -151,7 +152,7 @@ class _KunstViewState extends State<KunstView> {
                           }
                         : null,
                     child: Text(
-                        widget.artAnswersMap
+                        widget.sportAnswerMap
                             .elementAt(counter)[scoreArray[0]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -187,7 +188,7 @@ class _KunstViewState extends State<KunstView> {
                           }
                         : null,
                     child: Text(
-                        widget.artAnswersMap
+                        widget.sportAnswerMap
                             .elementAt(counter)[scoreArray[1]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -223,7 +224,7 @@ class _KunstViewState extends State<KunstView> {
                           }
                         : null,
                     child: Text(
-                        widget.artAnswersMap
+                        widget.sportAnswerMap
                             .elementAt(counter)[scoreArray[2]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -259,7 +260,7 @@ class _KunstViewState extends State<KunstView> {
                           }
                         : null,
                     child: Text(
-                        widget.artAnswersMap
+                        widget.sportAnswerMap
                             .elementAt(counter)[scoreArray[3]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),

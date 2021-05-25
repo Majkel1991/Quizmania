@@ -1,58 +1,57 @@
 import 'package:flutter/material.dart';
-import 'RoutingConstants.dart';
-import 'TextConstants.dart';
-
-import 'ColorContants.dart';
-import 'SizeConstants.dart';
-import 'package:quizmania/QuestionAndAnswerConstants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class GeografieView extends StatefulWidget {
-  final geographyQuestions =
-      QuestionsAndAnswersConstants.GEOGRAPHY.keys.toList();
-  final geographyAnswersMap = QuestionsAndAnswersConstants.GEOGRAPHY.values;
+import '../Constants/ColorContants.dart';
+import '../Constants/QuestionAndAnswerConstants.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Constants/SizeConstants.dart';
+import '../Constants/TextConstants.dart';
 
-  GeografieView({Key key}) : super(key: key);
+class LiteraturView extends StatefulWidget {
+  LiteraturView({Key key}) : super(key: key);
+  final literatureQuestions =
+      QuestionsAndAnswersConstants.LITERATURE.keys.toList();
+  final literatureAnswersMap = QuestionsAndAnswersConstants.LITERATURE.values;
 
   @override
-  _GeografieViewState createState() => _GeografieViewState();
+  _LiteraturViewState createState() => _LiteraturViewState();
 
   static Future<int> getScoreFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final geographyScore = prefs.getInt("geographyScore");
-    if (geographyScore == null) {
+    final literatureScore = prefs.getInt("literatureScore");
+    if (literatureScore == null) {
       return 0;
     }
-    return geographyScore;
+    return literatureScore;
   }
 
   static Future<int> getTotalFromSharedPref() async {
     final prefs = await SharedPreferences.getInstance();
-    final geographyTotalQuestions = prefs.getInt("geographyTotal");
-    if (geographyTotalQuestions == null) {
+    final literatureTotalQuestions = prefs.getInt("literatureTotal");
+    if (literatureTotalQuestions == null) {
       return 0;
     }
-    return geographyTotalQuestions;
+    return literatureTotalQuestions;
   }
 
   static Future<void> resetScoreAndTotal() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("geographyScore", 0);
-    await prefs.setInt("geographyTotal", 0);
+    await prefs.setInt("literatureScore", 0);
+    await prefs.setInt("literatureTotal", 0);
   }
 
   Future<void> incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
     int lastScore = await getScoreFromSharedPref();
     int currentScore = ++lastScore;
-    await prefs.setInt("geographyScore", currentScore);
+    await prefs.setInt("literatureScore", currentScore);
   }
 
   Future<void> incrementTotal() async {
     final prefs = await SharedPreferences.getInstance();
     int lastTotal = await getTotalFromSharedPref();
     int currentTotal = ++lastTotal;
-    await prefs.setInt("geographyTotal", currentTotal);
+    await prefs.setInt("literatureTotal", currentTotal);
   }
 
   void _getScore() async {
@@ -66,7 +65,7 @@ class GeografieView extends StatefulWidget {
   }
 }
 
-class _GeografieViewState extends State<GeografieView> {
+class _LiteraturViewState extends State<LiteraturView> {
   int counter = 0;
   var scoreArray = [-3, -2, -1, 1];
   Color buttonColor1 = ColorConstants.ButtonColor;
@@ -80,11 +79,11 @@ class _GeografieViewState extends State<GeografieView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.public),
+        leading: Icon(Icons.auto_stories),
         centerTitle: true,
-        title: Text(TextConstants.appBarGeografie),
+        title: Text(TextConstants.appBarLiterature),
       ),
-      body: counter <= (widget.geographyQuestions.length - 1)
+      body: counter <= (widget.literatureQuestions.length - 1)
           ? _displayQuestions()
           : _displayEndOfQuiz(context),
     );
@@ -104,7 +103,7 @@ class _GeografieViewState extends State<GeografieView> {
                 color: ColorConstants.BoxColor),
             child: Center(
               child: Text(
-                widget.geographyQuestions[counter],
+                widget.literatureQuestions[counter],
                 style: TextStyle(
                     color: ColorConstants.TextColorWithinBox,
                     fontSize: SizeConstants.titleSize),
@@ -154,7 +153,7 @@ class _GeografieViewState extends State<GeografieView> {
                           }
                         : null,
                     child: Text(
-                        widget.geographyAnswersMap
+                        widget.literatureAnswersMap
                             .elementAt(counter)[scoreArray[0]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -190,7 +189,7 @@ class _GeografieViewState extends State<GeografieView> {
                           }
                         : null,
                     child: Text(
-                        widget.geographyAnswersMap
+                        widget.literatureAnswersMap
                             .elementAt(counter)[scoreArray[1]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -226,7 +225,7 @@ class _GeografieViewState extends State<GeografieView> {
                           }
                         : null,
                     child: Text(
-                        widget.geographyAnswersMap
+                        widget.literatureAnswersMap
                             .elementAt(counter)[scoreArray[2]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),
@@ -262,7 +261,7 @@ class _GeografieViewState extends State<GeografieView> {
                           }
                         : null,
                     child: Text(
-                        widget.geographyAnswersMap
+                        widget.literatureAnswersMap
                             .elementAt(counter)[scoreArray[3]]
                             .toString(),
                         style: TextStyle(fontSize: SizeConstants.textSize)),

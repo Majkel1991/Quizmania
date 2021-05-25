@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quizmania/routeGenerator.dart';
-import 'package:quizmania/textConstants.dart';
-import 'ColorContants.dart';
-import 'RoutingConstants.dart';
-import 'SizeConstants.dart';
+import 'package:quizmania/Routing/routeGenerator.dart';
+import 'Constants/textConstants.dart';
+import 'Constants/ColorContants.dart';
+import 'Constants/RoutingConstants.dart';
+import 'Constants/SizeConstants.dart';
 
 void main() {
   runApp(MyApp());

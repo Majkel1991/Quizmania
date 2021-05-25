@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ColorContants.dart';
-import 'QuestionAndAnswerConstants.dart';
-import 'RoutingConstants.dart';
-import 'SizeConstants.dart';
-import 'TextConstants.dart';
+import '../Constants/ColorContants.dart';
+import '../Constants/QuestionAndAnswerConstants.dart';
+import '../Constants/RoutingConstants.dart';
+import '../Constants/SizeConstants.dart';
+import '../Constants/TextConstants.dart';
 
 class FernsehserienView extends StatefulWidget {
   final tvQuestions = QuestionsAndAnswersConstants.TV.keys.toList();
