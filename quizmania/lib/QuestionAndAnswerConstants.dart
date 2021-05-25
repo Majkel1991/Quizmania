@@ -82,17 +82,17 @@ class QuestionsAndAnswersConstants {
       -2: "50 n. Chr.",
       -3: "500 n. Chr"
     },
-    "In welchem Kontinent liegt Moskau": {
-      1: "Europa",
-      -1: "Asien",
-      -2: "Südamerika",
-      -3: "Nordamerika"
+    "Wann starb Kleopatra": {
+      1: "33 v. Chr.",
+      -1: "1 n. Chr.",
+      -2: "100 n. Chr.",
+      -3: "100 v. Chr"
     },
-    "Welcher dieser Inseln liegt in Ozeanien": {
-      -1: "Phi Phi Island",
-      1: "Polynesia",
-      -2: "Koh Lanta",
-      -3: "Koh Samui"
+    "Wie hiess der Vater von Alexander dem Grossen": {
+      -1: "Alexander II",
+      1: "Philip II",
+      -2: "Alexander I",
+      -3: "Philip I"
     },
   };
   static const Map<String, Map<int, String>> LITERATURE = {

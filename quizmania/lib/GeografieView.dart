@@ -16,6 +16,54 @@ class GeografieView extends StatefulWidget {
 
   @override
   _GeografieViewState createState() => _GeografieViewState();
+
+  static Future<int> getScoreFromSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    final geographyScore = prefs.getInt("geographyScore");
+    if (geographyScore == null) {
+      return 0;
+    }
+    return geographyScore;
+  }
+
+  static Future<int> getTotalFromSharedPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    final geographyTotalQuestions = prefs.getInt("geographyTotal");
+    if (geographyTotalQuestions == null) {
+      return 0;
+    }
+    return geographyTotalQuestions;
+  }
+
+  static Future<void> resetScoreAndTotal() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt("geographyScore", 0);
+    await prefs.setInt("geographyTotal", 0);
+  }
+
+  Future<void> incrementScore() async {
+    final prefs = await SharedPreferences.getInstance();
+    int lastScore = await getScoreFromSharedPref();
+    int currentScore = ++lastScore;
+    await prefs.setInt("geographyScore", currentScore);
+  }
+
+  Future<void> incrementTotal() async {
+    final prefs = await SharedPreferences.getInstance();
+    int lastTotal = await getTotalFromSharedPref();
+    int currentTotal = ++lastTotal;
+    await prefs.setInt("geographyTotal", currentTotal);
+  }
+
+  void _getScore() async {
+    int score = await getScoreFromSharedPref();
+    print("Pref score: " + score.toString());
+  }
+
+  void _getTotal() async {
+    int total = await getTotalFromSharedPref();
+    print("Pref total: " + total.toString());
+  }
 }
 
 class _GeografieViewState extends State<GeografieView> {
@@ -50,6 +98,7 @@ class _GeografieViewState extends State<GeografieView> {
             height: SizeConstants.questionBoxHeight,
             width: SizeConstants.questionBoxWidth,
             margin: EdgeInsets.all(SizeConstants.questionBoxMargin),
+            padding: EdgeInsets.all(SizeConstants.questionBoxPadding),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(SizeConstants.borderRadius),
                 color: ColorConstants.BoxColor),
@@ -90,7 +139,7 @@ class _GeografieViewState extends State<GeografieView> {
                         ? () {
                             setState(() {
                               if (scoreArray[0].toString() == "1") {
-                                _incrementScore();
+                                widget.incrementScore();
                                 print("correct answer");
 
                                 buttonColor1 = Colors.green;
@@ -101,7 +150,7 @@ class _GeografieViewState extends State<GeografieView> {
                               answerButtonsEnabled = false;
                             });
                             nextQuestionButtonEnabled = true;
-                            _incrementTotal();
+                            widget.incrementTotal();
                           }
                         : null,
                     child: Text(
@@ -127,7 +176,7 @@ class _GeografieViewState extends State<GeografieView> {
                         ? () {
                             setState(() {
                               if (scoreArray[1].toString() == "1") {
-                                _incrementScore();
+                                widget.incrementScore();
                                 print("correct answer");
                                 buttonColor2 = Colors.green;
                               } else {
@@ -137,7 +186,7 @@ class _GeografieViewState extends State<GeografieView> {
                               answerButtonsEnabled = false;
                             });
                             nextQuestionButtonEnabled = true;
-                            _incrementTotal();
+                            widget.incrementTotal();
                           }
                         : null,
                     child: Text(
@@ -163,7 +212,7 @@ class _GeografieViewState extends State<GeografieView> {
                         ? () {
                             setState(() {
                               if (scoreArray[2].toString() == "1") {
-                                _incrementScore();
+                                widget.incrementScore();
                                 print("correct answer");
                                 buttonColor3 = Colors.green;
                               } else {
@@ -173,7 +222,7 @@ class _GeografieViewState extends State<GeografieView> {
                               answerButtonsEnabled = false;
                             });
                             nextQuestionButtonEnabled = true;
-                            _incrementTotal();
+                            widget.incrementTotal();
                           }
                         : null,
                     child: Text(
@@ -199,7 +248,7 @@ class _GeografieViewState extends State<GeografieView> {
                         ? () {
                             setState(() {
                               if (scoreArray[3].toString() == "1") {
-                                _incrementScore();
+                                widget.incrementScore();
                                 buttonColor4 = Colors.green;
                                 print("correct answer");
                               } else {
@@ -209,7 +258,7 @@ class _GeografieViewState extends State<GeografieView> {
                               answerButtonsEnabled = false;
                             });
                             nextQuestionButtonEnabled = true;
-                            _incrementTotal();
+                            widget.incrementTotal();
                           }
                         : null,
                     child: Text(
@@ -243,8 +292,8 @@ class _GeografieViewState extends State<GeografieView> {
                       buttonColor4 = ColorConstants.ButtonColor;
                       answerButtonsEnabled = true;
                       nextQuestionButtonEnabled = false;
-                      _getScore();
-                      _getTotal();
+                      widget._getScore();
+                      widget._getTotal();
                     });
                   }
                 : null,
@@ -299,47 +348,5 @@ class _GeografieViewState extends State<GeografieView> {
         ],
       ),
     );
-  }
-
-  Future<int> _getScoreFromSharedPref() async {
-    final prefs = await SharedPreferences.getInstance();
-    final geographyScore = prefs.getInt("geographyScore");
-    if (geographyScore == null) {
-      return 0;
-    }
-    return geographyScore;
-  }
-
-  Future<int> _getTotalFromSharedPref() async {
-    final prefs = await SharedPreferences.getInstance();
-    final geographyTotalQuestions = prefs.getInt("geographyTotal");
-    if (geographyTotalQuestions == null) {
-      return 0;
-    }
-    return geographyTotalQuestions;
-  }
-
-  void _getScore() async {
-    int score = await _getScoreFromSharedPref();
-    print("Pref score: " + score.toString());
-  }
-
-  void _getTotal() async {
-    int total = await _getTotalFromSharedPref();
-    print("Pref total: " + total.toString());
-  }
-
-  Future<void> _incrementScore() async {
-    final prefs = await SharedPreferences.getInstance();
-    int lastScore = await _getScoreFromSharedPref();
-    int currentScore = ++lastScore;
-    await prefs.setInt("geographyScore", currentScore);
-  }
-
-  Future<void> _incrementTotal() async {
-    final prefs = await SharedPreferences.getInstance();
-    int lastTotal = await _getTotalFromSharedPref();
-    int currentTotal = ++lastTotal;
-    await prefs.setInt("geographyTotal", currentTotal);
   }
 }

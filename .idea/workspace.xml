@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee93a9b1-fa99-4264-92fc-5d76ff9dc8ec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/quizmania/lib/ScoreboardView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/quizmania/lib/ScoreboardView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizmania/lib/TextConstants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/quizmania/lib/TextConstants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizmania/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/quizmania/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizmania/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/quizmania/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1szwVrGTDitUexAhue6YzcwGfYr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee93a9b1-fa99-4264-92fc-5d76ff9dc8ec" name="Default Changelist" comment="" />
+      <created>1621888753118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621888753118</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="165" y="92" width="1663" height="896" key="AVDManager" timestamp="1621888823799">
+      <screen x="73" y="0" width="1847" height="1080" />
+    </state>
+    <state x="165" y="92" width="1663" height="896" key="AVDManager/73.0.1847.1080/-2560.-364.2489.1440@73.0.1847.1080" timestamp="1621888823799" />
+  </component>
+</project>

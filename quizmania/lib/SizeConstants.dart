@@ -21,6 +21,7 @@ class SizeConstants {
   static const double questionBoxHeight = 225;
   static const double questionBoxWidth = double.infinity;
   static const double questionBoxMargin = 5;
+  static const double questionBoxPadding = 5;
   static const double answerBoxMargin = 5;
 
   static const double gridViewContainerHeight = 250;
@@ -32,4 +33,8 @@ class SizeConstants {
 
   static const double nextQuestionButtonHeight = 25;
   static const double nextQuestionButtonWidth = 40;
+
+  static const double scoreboardPadding = 20;
+  static const int scoreboardAnimationDuration = 1000;
+  static const double scoreboardPaddingHeader = 5;
 }
