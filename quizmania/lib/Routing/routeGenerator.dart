@@ -14,23 +14,23 @@ import '../Views/FernsehserienView.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutingConstants.MainViewRoute:
+      case RoutingConstants.mainViewRoute:
         return MaterialPageRoute(builder: (context) => MainView());
-      case RoutingConstants.GeografieViewRoute:
+      case RoutingConstants.geografieViewRoute:
         return MaterialPageRoute(builder: (context) => GeografieView());
-      case RoutingConstants.FernsehserienRoute:
+      case RoutingConstants.fernsehserienRoute:
         return MaterialPageRoute(builder: (context) => FernsehserienView());
-      case RoutingConstants.FilmeViewRoute:
+      case RoutingConstants.filmeViewRoute:
         return MaterialPageRoute(builder: (context) => FilmeView());
-      case RoutingConstants.GeschichteViewRoute:
+      case RoutingConstants.geschichteViewRoute:
         return MaterialPageRoute(builder: (context) => GeschichteView());
-      case RoutingConstants.KunstViewRoute:
+      case RoutingConstants.kunstViewRoute:
         return MaterialPageRoute(builder: (context) => KunstView());
-      case RoutingConstants.LiteraturViewRoute:
+      case RoutingConstants.literaturViewRoute:
         return MaterialPageRoute(builder: (context) => LiteraturView());
-      case RoutingConstants.SportViewRoute:
+      case RoutingConstants.sportViewRoute:
         return MaterialPageRoute(builder: (context) => SportView());
-      case RoutingConstants.ScoarboardViewRoute:
+      case RoutingConstants.scoarboardViewRoute:
         return MaterialPageRoute(builder: (context) => ScoreboardView());
     }
     return _errorRoute();

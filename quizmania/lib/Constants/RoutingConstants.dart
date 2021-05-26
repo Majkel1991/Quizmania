@@ -1,11 +1,11 @@
 class RoutingConstants {
-  static const String MainViewRoute = "/";
-  static const String GeografieViewRoute = "GeografieView";
-  static const String SportViewRoute = "SportView";
-  static const String GeschichteViewRoute = "GeschichteView";
-  static const String LiteraturViewRoute = "LiteraturView";
-  static const String KunstViewRoute = "KunstView";
-  static const String FernsehserienRoute = "FernsehserienView";
-  static const String FilmeViewRoute = "FilmeView";
-  static const String ScoarboardViewRoute = "ScoreboardView";
+  static const String mainViewRoute = "/";
+  static const String geografieViewRoute = "GeografieView";
+  static const String sportViewRoute = "SportView";
+  static const String geschichteViewRoute = "GeschichteView";
+  static const String literaturViewRoute = "LiteraturView";
+  static const String kunstViewRoute = "KunstView";
+  static const String fernsehserienRoute = "FernsehserienView";
+  static const String filmeViewRoute = "FilmeView";
+  static const String scoarboardViewRoute = "ScoreboardView";
 }

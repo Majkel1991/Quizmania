@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: ColorConstants.AppbarColor,
+        primarySwatch: ColorConstants.appbarColor,
       ),
-      initialRoute: RoutingConstants.MainViewRoute,
+      initialRoute: RoutingConstants.mainViewRoute,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
@@ -48,13 +48,13 @@ class MainView extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(SizeConstants.borderRadius),
-                  color: ColorConstants.BoxColor),
+                  color: ColorConstants.boxColor),
               child: Center(
                 child: Text(
                   TextConstants.topicTitle,
                   style: TextStyle(
                       fontSize: SizeConstants.titleSize,
-                      color: ColorConstants.TextColorWithinBox),
+                      color: ColorConstants.textColorWithinBox),
                 ),
               ),
             ),
@@ -87,9 +87,9 @@ class MainView extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return ColorConstants.ButtonColor;
+                        return ColorConstants.buttonColor;
                       return ColorConstants
-                          .ButtonColor; // Use the component's default.
+                          .buttonColor; // Use the component's default.
                     },
                   ),
                 ),

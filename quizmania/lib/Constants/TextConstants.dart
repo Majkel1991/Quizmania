@@ -11,7 +11,7 @@ class TextConstants {
   static const String topicTitle = "Wählen sie bitte ein Themengebiet";
   static const String scoreboardGeografie = "Geografie Score";
   static const String scoreboardSport = "Sport Score";
-  static const String scoreboardGeschichte = "Geschichte Scoreboard";
+  static const String scoreboardGeschichte = "Geschichte Score";
   static const String scoreboardLiteratur = "Literatur Score";
   static const String scoreboardKunst = "Kunst Score";
   static const String scoreboardTv = "Fernsehserien Score";

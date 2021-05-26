@@ -69,10 +69,10 @@ class GeografieView extends StatefulWidget {
 class _GeografieViewState extends State<GeografieView> {
   int counter = 0;
   var scoreArray = [-3, -2, -1, 1];
-  Color buttonColor1 = ColorConstants.ButtonColor;
-  Color buttonColor2 = ColorConstants.ButtonColor;
-  Color buttonColor3 = ColorConstants.ButtonColor;
-  Color buttonColor4 = ColorConstants.ButtonColor;
+  Color buttonColor1 = ColorConstants.buttonColor;
+  Color buttonColor2 = ColorConstants.buttonColor;
+  Color buttonColor3 = ColorConstants.buttonColor;
+  Color buttonColor4 = ColorConstants.buttonColor;
   bool answerButtonsEnabled = true;
   bool nextQuestionButtonEnabled = false;
 
@@ -101,12 +101,12 @@ class _GeografieViewState extends State<GeografieView> {
             padding: EdgeInsets.all(SizeConstants.questionBoxPadding),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(SizeConstants.borderRadius),
-                color: ColorConstants.BoxColor),
+                color: ColorConstants.boxColor),
             child: Center(
               child: Text(
                 widget.geographyQuestions[counter],
                 style: TextStyle(
-                    color: ColorConstants.TextColorWithinBox,
+                    color: ColorConstants.textColorWithinBox,
                     fontSize: SizeConstants.titleSize),
               ),
             ),
@@ -276,8 +276,8 @@ class _GeografieViewState extends State<GeografieView> {
               backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
                   if (states.contains(MaterialState.pressed))
-                    return ColorConstants.ButtonColor;
-                  return ColorConstants.ButtonColor;
+                    return ColorConstants.buttonColor;
+                  return ColorConstants.buttonColor;
                 },
               ),
             ),
@@ -286,10 +286,10 @@ class _GeografieViewState extends State<GeografieView> {
                     setState(() {
                       scoreArray.shuffle();
                       counter += 1;
-                      buttonColor1 = ColorConstants.ButtonColor;
-                      buttonColor2 = ColorConstants.ButtonColor;
-                      buttonColor3 = ColorConstants.ButtonColor;
-                      buttonColor4 = ColorConstants.ButtonColor;
+                      buttonColor1 = ColorConstants.buttonColor;
+                      buttonColor2 = ColorConstants.buttonColor;
+                      buttonColor3 = ColorConstants.buttonColor;
+                      buttonColor4 = ColorConstants.buttonColor;
                       answerButtonsEnabled = true;
                       nextQuestionButtonEnabled = false;
                       widget._getScore();
@@ -315,12 +315,12 @@ class _GeografieViewState extends State<GeografieView> {
             margin: EdgeInsets.all(SizeConstants.questionBoxMargin),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(SizeConstants.borderRadius),
-                color: ColorConstants.BoxColor),
+                color: ColorConstants.boxColor),
             child: Center(
                 child: Text(TextConstants.endOfQuiz,
                     style: TextStyle(
                       fontSize: SizeConstants.textSize,
-                      color: ColorConstants.TextColorWithinBox,
+                      color: ColorConstants.textColorWithinBox,
                     ))),
           ),
           SizedBox(
@@ -331,19 +331,19 @@ class _GeografieViewState extends State<GeografieView> {
               backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
                   if (states.contains(MaterialState.pressed))
-                    return ColorConstants.ButtonColor;
-                  return ColorConstants.ButtonColor;
+                    return ColorConstants.buttonColor;
+                  return ColorConstants.buttonColor;
                 },
               ),
             ),
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  RoutingConstants.MainViewRoute, (route) => false);
+                  RoutingConstants.mainViewRoute, (route) => false);
             },
             child: Text(TextConstants.endOfQuizButtonText,
                 style: TextStyle(
                     fontSize: SizeConstants.textSize,
-                    color: ColorConstants.TextColorWithinBox)),
+                    color: ColorConstants.textColorWithinBox)),
           ),
         ],
       ),

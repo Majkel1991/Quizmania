@@ -66,8 +66,8 @@ class _ScoreboardViewState extends State<ScoreboardView> {
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.pressed))
-                        return ColorConstants.ButtonColor;
-                      return ColorConstants.ButtonColor;
+                        return ColorConstants.buttonColor;
+                      return ColorConstants.buttonColor;
                     },
                   ),
                 ),
@@ -111,7 +111,7 @@ class _ScoreboardViewState extends State<ScoreboardView> {
             center: Text(snapshot.data.isNaN
                 ? "0%"
                 : (snapshot.data * 100).toStringAsFixed(2) + "%"),
-            progressColor: ColorConstants.BoxColor,
+            progressColor: ColorConstants.boxColor,
             animation: true,
             animationDuration: SizeConstants.scoreboardAnimationDuration,
           );
